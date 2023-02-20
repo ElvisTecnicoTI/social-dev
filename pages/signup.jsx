@@ -9,7 +9,7 @@ import ImageWithSpace from '../src/components/layout/ImageWithSpace'
 import H1 from '../src/components/typography/H1'
 import H2 from '../src/components/typography/H2'
 import H4 from '../src/components/typography/H4'
-import Button from '../src/components/inputs/button'
+import Button from '../src/components/inputs/Button'
 import Input from '../src/components/inputs/Input'
 
 const FormContainer = styled.div`
@@ -43,12 +43,12 @@ function SignupPage() {
       <FormContainer>
         <H2>Crie sua conta</H2>
         <Form onSubmit={handleSubmit(handleForm)}>
-          <Input Label="nome" {...register('firstName')} />
-          <Input Label="Sobrenome" {...register('lastName')} />
-          <Input Label="Usuário" {...register('user')}/>
-          <Input Label="Email" type="email" {...register('email')}/>
-          <Input Label="Senha" type="password" {...register('password')} />
-          <Button type="submit">Cadastrar</Button>
+          <Input Label="nome" {...register('firstName')} error={errors.firstName} />
+          <Input Label="Sobrenome" {...register('lastName')} error={errors.lastName} />
+          <Input Label="Usuário" {...register('user')} error={errors.user}/>
+          <Input Label="Email" type="email" {...register('email')} error={errors.email} />
+          <Input Label="Senha" type="password" {...register('password')} error={errors.password} />
+          <Button type="submit" disabled={Object.keys(errors).length > 0}>Cadastrar</Button>
         </Form>
         <Text>Já possui uma conta? <Link href="/login">Faça seu login</Link></Text>
       </FormContainer>
