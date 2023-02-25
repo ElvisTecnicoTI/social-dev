@@ -28,7 +28,7 @@ const Text = styled.p`
 `
 
 function SignupPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: joiResolver(signupSchema)
   })
 
@@ -43,11 +43,11 @@ function SignupPage() {
       <FormContainer>
         <H2>Crie sua conta</H2>
         <Form onSubmit={handleSubmit(handleForm)}>
-          <Input Label="nome" {...register('firstName')} error={errors.firstName} />
-          <Input Label="Sobrenome" {...register('lastName')} error={errors.lastName} />
-          <Input Label="Usuário" {...register('user')} error={errors.user}/>
-          <Input Label="Email" type="email" {...register('email')} error={errors.email} />
-          <Input Label="Senha" type="password" {...register('password')} error={errors.password} />
+          <Input Label="nome" name="firstName" control={control} />
+          <Input Label="Sobrenome" name="lastName" control={control} />
+          <Input Label="Usuário" name="user" control={control} />
+          <Input Label="Email" type="email" name="email" control={control} />
+          <Input Label="Senha" type="password" name="password" control={control} />
           <Button type="submit" disabled={Object.keys(errors).length > 0}>Cadastrar</Button>
         </Form>
         <Text>Já possui uma conta? <Link href="/login">Faça seu login</Link></Text>
