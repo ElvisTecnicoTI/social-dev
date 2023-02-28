@@ -23,6 +23,12 @@ const signup = createHandler()
 
       res.status(201).json({ok: true})
     } catch (err) {
+      if (err.code === 11000) {
+        return res.status(400).send({
+          code: 11000,
+          duplicatedKey: Object.keys(err.keyPattern)[0]
+        })
+      }
       console.error(err)
       throw err
     }
