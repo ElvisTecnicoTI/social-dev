@@ -47,7 +47,6 @@ function HomePage ({ user }) {
             Últimas postagens:
           </LastPostText>
           <RefreshPostsContainer>
-            <RefreshPosts>Carregar novas postagens</RefreshPosts>
           </RefreshPostsContainer>
           <PostContainer>
               {
