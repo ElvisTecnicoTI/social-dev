@@ -21,7 +21,7 @@ const StyledInput = styled.input`
 
   ${props => props.error && `border: 2px solid ${props.theme.error};`}
 
-  &:focus{
+  :focus{
     outline: none;
   }
 `
