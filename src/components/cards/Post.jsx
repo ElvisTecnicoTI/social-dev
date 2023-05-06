@@ -5,6 +5,7 @@ import Menu from '../navigation/Menu'
 import axios from 'axios'
 import { useSWRConfig } from 'swr'
 import EditPost from './EditPost'
+import ControlledTextarea from '../inputs/ControlledTextarea'
 
 const StyleUsername = styled.p`
   font-weight: bold;
@@ -22,6 +23,7 @@ const PostContainer = styled.div`
   background-color: ${props => props.theme.white};
   padding: 20px;
   border-radius: 10px;
+  box-sizing: border-box;
 `
 const ContainerMenu = styled.div`
   float: right;

@@ -34,9 +34,12 @@ function SignupPage() {
   const { control, handleSubmit, formState: { errors }, setError } = useForm({
     resolver: joiResolver(signupSchema)
   })
+  const [removeLoading, setRemoveLoading] = useState(false) //Loading states for signup button
 
   const handleForm = async (data) => {
     try {
+
+      setRemoveLoading(true) //Loading activated
       const { status } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/signup`, data)
       if(status === 201) {
         router.push('/')
@@ -63,7 +66,7 @@ function SignupPage() {
           <Input Label="Usuário" name="user" control={control} />
           <Input Label="Email" type="email" name="email" control={control} />
           <Input Label="Senha" type="password" name="password" control={control} />
-          <Button type="submit" disabled={Object.keys(errors).length > 0}>Cadastrar</Button>
+          <Button Loading={removeLoading} type="submit" disabled={Object.keys(errors).length > 0}>Cadastrar</Button>
         </Form>
         <Text>Já possui uma conta? <Link href="/login">Faça seu login</Link></Text>
       </FormContainer>
