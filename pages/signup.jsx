@@ -37,9 +37,8 @@ function SignupPage() {
   const [removeLoading, setRemoveLoading] = useState(false) //Loading states for signup button
 
   const handleForm = async (data) => {
+    setRemoveLoading(true) //Loading activated
     try {
-
-      setRemoveLoading(true) //Loading activated
       const { status } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/signup`, data)
       if(status === 201) {
         router.push('/')

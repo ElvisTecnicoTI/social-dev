@@ -17,8 +17,8 @@ const EditPost = ({ id, text, onSave }) => {
 
 
   const handleSaveEdit = async (data) => {
+     setRemoveLoading(true) //Loading activated
     try {
-      setRemoveLoading(true) //Loading activated
       const response = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/post`, {
         id,
         text: data.text

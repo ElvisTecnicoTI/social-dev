@@ -37,8 +37,8 @@ function LoginPage() {
   const [removeLoading, setRemoveLoading] = useState(false) //Loading states for login button
 
   const onSubmit = async (data) => {
+    setRemoveLoading(true) //Loading activated
     try {
-      setRemoveLoading(true) //Loading activated
       const { status } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/login`, data)
 
       if (status === 200) {
