@@ -45,6 +45,7 @@ function LoginPage() {
         router.push('/')
       }
     } catch ({ response }) {
+      setRemoveLoading(false) 
       if (response.data === 'password incorrect') {
         setError('password', {
           message: 'A senha está incorreta.'
